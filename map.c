@@ -87,24 +87,24 @@ struct map map_initialize()
 
 int main()
 {
-    struct map test = map_initialize();
-    map_append(&test, "test", 1);
-    map_append(&test, "test", 2000);
-    map_append(&test, "another", 200);
-    map_append(&test, "and_another", 100000);
+    struct map map = map_initialize();
+    map_append(&map, "test", 1);
+    map_append(&map, "test", 2000);
+    map_append(&map, "another", 200);
+    map_append(&map, "and_another", 100000);
 
-    char** blah = get_keys(&test);
-    int* blah_1 = get_values(&test, "blah");
+    char** keys = get_keys(&map);
+    int* values = get_values(&map, "test");
 
     
-    for (int i=0; i<test.index; i++)
+    for (int i=0; i<map.index; i++)
     {
-        printf("%s\n", blah[i]);
+        printf("%s\n", keys[i]);
     }
-    printf("%d\n", sizeof(blah_1)/sizeof(blah_1[0]));
-    for (int i=0; i<sizeof(blah_1)/sizeof(blah_1[0])+1; i++)
+    
+    for (int i=0; i<sizeof(values)/sizeof(values[0])+1; i++)
     {
-        printf("%d\n", blah_1[i]);
+        printf("%d\n", values[i]);
     }
 
     return EXIT_SUCCESS;
